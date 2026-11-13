@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie Search</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 0 15px;
+            background-color: rgb(215, 236, 250);
+        }
+        h1{
+            text-align: center;
+        }
+        input{
+            padding: 10px;
+            width: 65%;
+            font-size: 15px;
+        }
+        button{
+            padding: 10px 16px;
+            font-size: 15px;
+            background-color: #ff9f43;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li{
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            background-color: aliceblue;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Movie Search</h1>
+    <input type="text" id="searchInput" placeholder="movie name">
+    <button id="searchBtn">search</button>
+    <ul id="results"></ul>
+
+    <script>
+        let searchInput = document.getElementById("searchInput");
+        let searchBtn = document.getElementById ("searchBtn");
+        let results = document.getElementById ("results");
+
+        searchBtn.addEventListener("click",async function(){
+            results.innerHTML = "";
+            let url = "https://api.tvmaze.com/search/shows?q="  + searchInput.value;
+            let response = await fetch(url);
+            let data = await response.json();
+
+            data.forEach(function(item){
+                let li = document.createElement ("li");
+                li.textContent = item.show.name + "-" + (item.show.rating.average || "N/A");
+                if(item.show.image){
+                    let img = document.createElement("img");
+                    img.src = item.show.image.medium;
+                    img.width =80;
+                    li.appendChild(img);
+                }
+                results.appendChild(li);
+            });
+        });
+    </script>
+</body>
+</html>
