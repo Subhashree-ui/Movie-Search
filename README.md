@@ -1,9 +1,9 @@
 # Movie Search
 
-A TV show search app built with **vanilla JavaScript**, HTML, and CSS. Type a show name to see matching results with ratings and posters, fetched live from the TVMaze API.
+A TV show search app built with **JavaScript**, HTML, and CSS. Type a show name to see matching results with ratings and posters, fetched live from the TVMaze API.
 
 ## 🔗 Live Demo
-[Click here to try it out](TUMHARA_LIVE_LINK_YAHAN_DAALO)
+[Click here to try it out](https://subhashree-ui.github.io/Movie-Search/movie.html)
 
 ## ✨ Features
 - Search shows by name
@@ -23,7 +23,3 @@ A TV show search app built with **vanilla JavaScript**, HTML, and CSS. Type a sh
 - Building a URL from user input
 - Dynamic DOM creation (`createElement`, `appendChild`)
 - Handling missing data with `if` and `||`
-
-## 🚀 How to Run
-1. Clone or download this repository
-2. Open `index.html` in a browser
